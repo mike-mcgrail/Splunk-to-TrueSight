@@ -8,7 +8,7 @@ Tested on Splunk 7.2 and TrueSight 10.3 (all Windows machines)
 1. Copy dedup_splunk_event.mrl to cell (ext_cell in this code) on TrueSight server, run mcompile and reload
 
 *Splunk*
-2. Update /bin/truesight.py to correct server names, company name, any other cell or slot updates as needed
+2. Update /bin/truesight.py to correct server names, company name, any other cell or slot updates as needed (e.g.: gcc_display below is a custom slot at my company)
 3. Copy alert_truesight to $SPLUNK_HOME/etc/apps/
 4. Restart Splunk
 5. Login to the Splunk web UI
@@ -38,8 +38,6 @@ d. GCC Event: check the box to set GCC_display to “YES” and show in the True
 **Updating Credentials**
 
 If credentials need to be updated
-
-Non-Prod:
 
 1. Navigate to $SPLUNK_HOME/etc/apps/alert_truesight/local/ and delete passwords.conf
 2. In the Splunk UI, navigate to Apps > Manage Apps, and next to TrueSight Alert Action click Set Up
