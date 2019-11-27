@@ -1,0 +1,11 @@
+[]
+# Allow only admin users to read this app's contents.
+# Allow only admin users to share objects into this app.
+access = read : [ admin ], write : [ admin ]
+
+[alert_actions/logger]
+# export actions globally
+export = system
+
+[alerts]
+export = system

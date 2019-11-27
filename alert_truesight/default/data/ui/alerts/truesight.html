@@ -1,0 +1,57 @@
+<form class="form-horizontal form-complex">
+    <div class="control-group">
+        <label class="control-label" for="truesight_hostname">Host</label>
+        <div class="controls">
+            <input type="text" class="input-xlarge" name="action.truesight.param.event_host" id="truesight_hostname" value="$result.host$"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                Specify TrueSight alert host. Default search host is <i>$result.host$</i>
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="truesight_severity">Severity</label>
+        <div class="controls">
+            <input type="text" class="input-xlarge" name="action.truesight.param.event_severity" id="truesight_severity" value="$alert.severity$" />
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                Specify TrueSight alert severity.
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="truesight_event_msg">Msg</label>
+        <div class="controls">
+            <input type="text" class="input-xlarge" name="action.truesight.param.event_msg" id="truesight_event_msg" value="Splunk alert $name$ for $result.host$" />
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                Specify TrueSight alert message.
+            </span>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="truesight_event_gcc">GCC Event</label>
+        <div class="controls">
+            <input type="checkbox" name="action.truesight.param.event_gcc" id="truesight_gcc_display" />
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <span class="help-block" style="display: block; position: static; width: auto; margin-left: 0;">
+                Show in TrueSight GCC console?
+            </span>
+        </div>
+    </div>
+</form>

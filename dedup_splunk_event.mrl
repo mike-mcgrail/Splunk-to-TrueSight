@@ -1,0 +1,28 @@
+#
+@kbversion('gwl_dedup_splunk_event','1.0.00',1000);
+#
+# Dedup SPLUNK_EVENT
+# Author: Mike McGrail
+# Created: 17/08/2018
+# WHEN
+#    a new SPLUNK_EVENT is received that has the same mc_host, mc_object, mc_parameter
+# AND
+#    an existing SPLUNK_EVENT is open
+# THEN
+#    1. Increment repeat_count of open event
+#    2. Update severity of old event, if necessary
+#    3. Drop new event
+  	
+new dedup_splunk_event: SPLUNK_EVENT ($NEW)
+
+updates duplicate ($OLD)
+    where [ $OLD.status != CLOSED ]
+    {
+        incr($OLD.repeat_count);
+        if ($OLD.severity != $NEW.severity) then {
+    	    ntadd($OLD,"Severity modified from " || $OLD.severity || " to " || $NEW.severity || " by duplicate event " || $NEW.event_handle);
+            $OLD.severity = $NEW.severity;
+ 		};
+        drop_new;
+    }
+END
